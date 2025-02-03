@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management</title>
+    <link rel="stylesheet" href="assets/index.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+
+<body>
+        <!--Login/Signup Page-->    
+        <div id="loginPage">
+            <h2>Login</h2>
+            <input type="text" id="loginUsername" placeholder="Username">
+            <input type="password" id="loginPassword" placeholder="Password">
+            <button onclick="login()">Login</button>
+            <p>Don't have an account? <a href="#" onclick="showPage('signupPage')">Sign up</a></p>
+        </div>
+
+        <div id="signupPage" style="display:block">
+        <h2>Sign Up</h2>
+        <input type="text" id="signupUsername" placeholder="New Username">
+        <input type="password" id="signupPassword" placeholder="New Password">
+        <button onclick="signup()">Sign Up</button>
+        <p>Already have an account? <a href="#" onclick="showPage('loginPage')">Login</a></p>
+        </div>
+        <!--End Login/Signup-->
+
+    <!--MainApp Starts-->
+    <div id="mainApp" style="display: none;">
+        <div class="container">
+
+        <!--NavBar-->
+        <nav class="sidebar">
+            <ul>
+                <li id="addInventoryLink" onclick="showPage('addInventoryPage')"><i class="fab fa-plus"></i> Add to Inventory</li>
+            <br>
+                <li id="inventoryListLink" onclick="showPage('inventoryListPage')"><i class="fab fa-list"></i> Inventory List</li>
+            <br>
+                <li id="cartLink" onclick="showPage('cartPage')"><i class="fab fa-shopping-cart"></i> Cart</li>
+            <br>
+                <button id="logoutBtn" onclick="logout()"><i class="fab fa-logout"></i> Logout</button>
+            </ul>
+        </nav>
+        <!--NavBar End-->
+            
+            <main>
+
+                <!--Add Inventory Page-->
+                <section id="addInventoryPage" class="page">
+                    <h1>Add Product</h1>
+                    <input type="text" id="productName" placeholder="Product Name">
+                    <input type="number" id="productPrice" placeholder="Price">
+                    <input type="number" id="productQuantity" placeholder="Quantity">
+                    <button onclick="addProduct()">Add Product</button>
+                </section>
+                <!--End Inventory Page-->
+
+                <!--Product Listing in the Inventory-->
+                <section id="inventoryListPage" class="page">
+                    <h1>Inventory List</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventoryList"></tbody>
+                    </table>
+                    <br>
+                        <button onclick="saveInventory()">Save Inventory</button>
+                </section>
+                <!--End Product Listing-->
+
+                <!--Transaction Cart Page-->
+                <section id="cartPage" class="page">
+                    <h1 style="text-align: left;">Search & Add Products to Cart.</h1>
+                    <br>
+                    <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Search products...">
+                    <br> <br>
+                    <ul id="searchResults"></ul>
+
+                    <br> <hr> <br>
+                    <h3>Cart:</h3>
+                    <br> <ul id="cartList"></ul>
+
+                    <hr> <br>
+                    <h2 id="totalAmount">Total: $0.00</h2>
+
+                    <br>
+                    <button onclick="checkout()">Checkout</button>
+
+                    <br> <br> <hr> <br> <br>
+
+                    <!-- Add "Clear History" Button to the Transaction History section -->
+                    <h3 style="text-align: center;">Transaction History</h3>
+                    <br>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>S/N</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th>Date</th>        
+                            </tr>
+                        </thead>
+                        <tbody id="transactionHistoryDisplay"> </tbody>
+                    </table>
+
+                    <br>
+                    <button onclick="clearTransactionHistory()" id="clearTransactionHistoryBtn">Clear Transaction History</button>
+
+                </section>
+                <!--End Transaction Cart Page-->
+                
+            </main>
+        <footer class="footer">
+            <p>© 2025 Fush. All Rights Reserved.</p>
+        </footer>
+            
+        </div>
+    </div>
+    <!--MainApp Ends-->
+
+    <script src="assets/renderer.js"></script>
+</body>
+</html>
