@@ -23,7 +23,7 @@
 
 ### 1️⃣ Clone the Repository  
 ```bash
-git clone https://github.com/FushRifle/Fush.git
+git clone https://github.com/FushRifle/Fush-Inventory-Management-Software-Electron.js-
 cd Fush
 
 ##2️⃣ Install Dependencies:
